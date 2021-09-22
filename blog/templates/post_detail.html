@@ -1,0 +1,13 @@
+
+{% extends 'index.html'%}
+{% load static %}
+
+{% block  content %}
+        <h4>{{each_post.title}}</h4>
+        <div class="col-sm-4">
+            <div class="card m-2">
+                <img src="{{each_post.photo.url}}" alt="" class="card-img-top" height="200px">
+            </div>       
+        </div>
+        <small class="text-muted">{{each_post.content}}</small>
+{% endblock %}
