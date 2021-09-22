@@ -22,6 +22,7 @@ def post_view(request):
         {
             'posts':posts,
             'form':form,
+            'home':True,
         }
     )
 
@@ -30,7 +31,7 @@ def post_view(request):
 
 # this is for post details #################
 def post_details(request,id):
-    each_post = Post.objects.get(id=id)
+    each_post = get_object_or_404(Post,id =id)
     return render(
         request,
         "post_detail.html",
@@ -54,7 +55,8 @@ def delete_view(request,id):
 # this view is for editing posts
 def edit_view(request,id):
     post = get_object_or_404(Post,id =id)
-    form = PostForm(request.POST or None,instance=post)
+    print(f"the title of post in edit view is:{post.title}")
+    form = PostForm(data =request.POST or None,files=request.FILES,instance=post)
 
     if form.is_valid():
         form.save()
@@ -68,6 +70,7 @@ def edit_view(request,id):
         {
             'form':form,
             'posts':posts,
+            'home':True,
         }
     )
 

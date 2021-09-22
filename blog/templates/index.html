@@ -19,21 +19,18 @@
 
         </div>
 
-        {% block form %}
+        
+
+        {% if home %}
         <form action="" method="POST" enctype="multipart/form-data"  style="margin-bottom: 20px; border: 1px solid black; padding: 20px;" >
             {% csrf_token %}
             {{form}}
             <input type="submit" class="btn btn-primary" style="display: block;">
         </form>
-        {% endblock %}
+        {% endif %}
 
-        <!-- <form action="" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{form}}
-            <input type="submit" name="" value="Upload" class="btn btn-danger">
-        </form> -->
 
-        {%  block content %}
+        {% block content %}
         <div class="row">
             {% for post in posts  %}
             <div class="col-sm-4">
