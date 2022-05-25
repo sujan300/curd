@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-u26g3imy6lyqvj^3x@*ol%20-^3^$^j0($pp($v1!a0b@#%idr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["uploaddjangoimg.herokuapp.com",'localhost']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -58,7 +58,7 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -72,7 +72,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'project.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -121,9 +120,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL       = '/static/'
-STATIC_ROOT      = BASE_DIR/'static'
-STATICFILES_DIRS = ['blog/static']
+STATIC_URL = '/static/'
+
+# for upload photoes in our project ..
+
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR /"media"
