@@ -11,7 +11,6 @@ def post_view(request):
     if request.method =="POST":
         form = PostForm(request.POST,request.FILES)
         if form.is_valid():
-            print("##############################yes valid !!!!!!!!!!!1")
             form.save()
             form = PostForm()
 
@@ -55,21 +54,15 @@ def delete_view(request,id):
 
 # this view is for editing posts
 def edit_view(request,id):
-    post = get_object_or_404(Post,id =id)
-
-    print("hsbdhshdjsdjvsdvjsvdjvsjdjhbsdjsjbdhiuehiwjodjcbbjbjhvbjhbcs c[[[[[[[",request.POST)
-    
+    post = get_object_or_404(Post,id =id)    
     if request.method !='POST':
         form = PostForm(instance=post)
-        print("=========================",request.FILES)
 
     else:
         form = PostForm(data =request.POST,files=request.FILES,instance=post)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/')
-    # else:
-    #     form = PostForm(instance=post)
 
     posts = Post.objects.all()
     return render(
