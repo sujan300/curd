@@ -3,11 +3,11 @@
 {% load static %}
 
 {% block  content %}
-        <h4>{{each_post.title}}</h4>
-        <div class="col-sm-4">
-            <div class="card m-2">
-                <img src="{{each_post.photo.url}}" alt="" class="card-img-top" height="200px">
+        <div class="col-sm-14">
+            <div class="card my-3">
+                <img src="{{each_post.photo.url}}" alt="" class="card-img-top">
+                <h4>{{each_post.title}}</h4>
+                <small class="text-muted" style="font-size: larger;">{{each_post.content}}</small>
             </div>       
         </div>
-        <small class="text-muted">{{each_post.content}}</small>
 {% endblock %}

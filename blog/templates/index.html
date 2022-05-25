@@ -13,7 +13,7 @@
   </head>
   <body>
 
-    <div class="container">
+    <div class="container my-5">
         <div class="py-5 text-center bg-secondary text-white">
             <h1 class="bm-3">Upload Image</h1>
 
@@ -22,10 +22,10 @@
         
 
         {% if home %}
-        <form action="" method="POST" enctype="multipart/form-data"  style="margin-bottom: 20px; border: 1px solid black; padding: 20px;" >
+        <form action="" method="POST"  enctype="multipart/form-data"  style="margin-bottom: 20px; background-color:#F8F9F9 ; padding: 20px;" >
             {% csrf_token %}
             {{form}}
-            <input type="submit" class="btn btn-primary" style="display: block;">
+            <input type="submit" class="btn btn-primary my-2" style="display: block;">
         </form>
         {% endif %}
 
@@ -35,14 +35,17 @@
             {% for post in posts  %}
             <div class="col-sm-4">
                 <div class="card m-2">
-                    <h5>{{post.title}}</h5>
                     <img src="{{post.photo.url}}" alt="" class="card-img-top" height="200px">
                     <div class="card-footer">
-                        <small class="text-muted">{{post.content}}</small>
+                        <h5>{{post.title}}</h5>
+                        <small class="text-muted">{{post.content | truncatewords:20 }}
+                            <a href="{% url 'post-detail' post.id %}" style="float: right;">more</a>
+                        </small>
                     </div>
-                    <a href="{% url 'post-edit' post.id %}" class="btn btn-primary" style="margin-bottom: 15px;">Edit</a>
-                    <a href="{% url 'post-delete' post.id %}" class="btn btn-danger">Delete</a>
-                    <a href="{% url 'post-detail' post.id %}" style="float: right;">more</a>
+                    <div>
+                        <a href="{% url 'post-edit' post.id %}" class="btn btn-primary">Edit</a>
+                        <a href="{% url 'post-delete' post.id %}" class="btn btn-danger">Delete</a>
+                    </div>
                 </div>
                 
             </div>

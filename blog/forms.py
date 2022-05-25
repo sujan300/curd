@@ -10,7 +10,7 @@ from django.forms import ModelForm
 class PostForm(ModelForm):
     class Meta:
         model   = Post
-        fields  = '__all__'
+        fields  = ["title","content","photo"]
         labels = {'photo:':"",'title:':"Title:"}
 
         widgets ={
