@@ -24,11 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ["SECRET_KEY"]
-# SECRET_KEY = 'django-insecure-u26g3imy6lyqvj^3x@*ol%20-^3^$^j0($pp($v1!a0b@#%idr'
+# SECRET_KEY = os.environ["SECRET_KEY"]
+SECRET_KEY = 'django-insecure-u26g3imy6lyqvj^3x@*ol%20-^3^$^j0($pp($v1!a0b@#%idr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["uploaddjangoimg.herokuapp.com",'localhost']
 
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
     'cloudinary',
     'blog',
     
@@ -145,9 +146,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-cloudinary.config( 
-  cloud_name = "daeoc8cpm", 
-  api_key = "411579266957466", 
-  api_secret = "JEF_k478NFJqzfxqDJxNevwCDww",
-  secure = True
-)
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'daeoc8cpm',
+    'API_KEY': '411579266957466',
+    'API_SECRET': 'JEF_k478NFJqzfxqDJxNevwCDww'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
